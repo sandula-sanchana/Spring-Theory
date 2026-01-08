@@ -4,7 +4,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component("testbeanX")// to change the bean id
-@Scope("prototype")
+@Scope("prototype")// this bean is not added to the container, its only called when requested
 public class TestBean {
 
     public TestBean() {
