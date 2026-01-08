@@ -51,5 +51,7 @@ public class AppInitializer {
         System.out.println("myConnection2:"+myConnection2);
 
        context.registerShutdownHook();// It registers a shutdown hook so that when the JVM is shutting down, Spring closes the application context and releases resources properly.
+        //shutdown hook > cleanup > thread called when jvm closes
     }
+
 }
