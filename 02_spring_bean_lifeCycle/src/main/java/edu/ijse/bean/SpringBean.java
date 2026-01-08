@@ -5,9 +5,11 @@ import org.springframework.beans.factory.*;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.EnvironmentAware;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component
+@Scope("prototype") // if u add this we cant see the destroy part, cause after use the bean is stored outside of the context inside heap , later will be cleared by the gc
 public class SpringBean implements BeanNameAware, BeanFactoryAware, ApplicationContextAware , DisposableBean {
     public SpringBean() {
         System.out.println("spring bean CREATED");//instantiation
