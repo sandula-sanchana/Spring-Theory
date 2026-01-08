@@ -1,9 +1,11 @@
 package edu.ijse;
 
 
+import edu.ijse.bean.MyConnection;
 import edu.ijse.bean.SpringBean;
 import edu.ijse.bean.TestBean;
 import edu.ijse.config.AppConfig;
+import edu.ijse.newBean.NewTestBean;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class AppInitializer {
@@ -33,6 +35,20 @@ public class AppInitializer {
 
         TestBean testBean2 =(TestBean) context.getBean("testbeanX",TestBean.class);
         System.out.println("testBean2:"+testBean2);
+
+        testBean.printMsg();
+        testBean2.printMsg();
+
+        NewTestBean newTestBean =(NewTestBean) context.getBean(NewTestBean.class);
+        System.out.println("newTestBean:"+newTestBean);
+
+//        MyConnection myConnection =(MyConnection) context.getBean("myConnection");
+//        MyConnection myConnection1 =(MyConnection) context.getBean("myConnection",MyConnection.class);
+//        System.out.println("myConnection:"+myConnection);
+//        System.out.println("myConnection1:"+myConnection1);
+
+        MyConnection myConnection2=(MyConnection) context.getBean("cc");
+        System.out.println("myConnection2:"+myConnection2);
 
        context.registerShutdownHook();// It registers a shutdown hook so that when the JVM is shutting down, Spring closes the application context and releases resources properly.
     }
