@@ -16,5 +16,9 @@ public class AppInitializer2 {
 
         context.registerShutdownHook();
 
+
+        //singleton-one instance,shared,stateless,thread safe,faster,lower mamery use,creation and destroy managed by spring
+        //prototype-per request,sloweer, only creation managed by spring,statefull,non theread safe beans, ,hign memory use
+
     }
 }
