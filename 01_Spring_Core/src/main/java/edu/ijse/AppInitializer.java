@@ -31,6 +31,9 @@ public class AppInitializer {
         edu.ijse.bean.TestBean testBean =(TestBean) context.getBean("testbeanX");
         System.out.println("springBean3:"+testBean);
 
+        TestBean testBean2 =(TestBean) context.getBean("testbeanX",TestBean.class);
+        System.out.println("testBean2:"+testBean2);
+
        context.registerShutdownHook();// It registers a shutdown hook so that when the JVM is shutting down, Spring closes the application context and releases resources properly.
     }
 }
