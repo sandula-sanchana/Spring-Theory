@@ -1,9 +1,11 @@
 package edu.ijse.di;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component
+@Scope("prototype")
 public class TestOne implements DiInterface {
     DI di;
 
@@ -22,7 +24,7 @@ public class TestOne implements DiInterface {
   }
 
     @Override
-    @Autowired
+    @Autowired // these are executed on the populate properties
     public void inject(DI di) {
        this.di=di;
     }
