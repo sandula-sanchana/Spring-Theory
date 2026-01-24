@@ -6,15 +6,15 @@ import org.springframework.stereotype.Component;
 @Component
 public class Boy {
 
-            @Autowired
-            Girl girl;
+            @Autowired// auto resolve DI
+            Agreement agreement;
 
             Boy(){
                 System.out.println("boy created");
             }
 
             public void chatWithGirl(){
-                girl.chat();
+                agreement.chat();
             }
 
 }
