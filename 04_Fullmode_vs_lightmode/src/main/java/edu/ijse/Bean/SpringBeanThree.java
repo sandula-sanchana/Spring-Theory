@@ -14,7 +14,7 @@ public class SpringBeanThree {
     public SpringBeanOne springBeanOne(){
 //        SpringBeanTwo springBeanTwo1=new SpringBeanTwo();
 //        SpringBeanTwo springBeanTwo2=new SpringBeanTwo(); // these are just pojo's
-        SpringBeanTwo springBeanTwo1=springBeanTwo(); // inter-bean dependency
+        SpringBeanTwo springBeanTwo1=springBeanTwo(); // inter-bean dependency not happening here
         return new SpringBeanOne();
     }
     @Bean
