@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 @Component
-@Primary// proritize the class when more implemented classes
+@Primary// proritize the class when more implemented classes // Bean level
 public class Girl implements Agreement, BeanNameAware, BeanFactoryAware, ApplicationContextAware, InitializingBean, DisposableBean {
 
     public Girl(){

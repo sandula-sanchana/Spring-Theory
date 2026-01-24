@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 public class Boy {
 
             @Autowired// auto resolve DI
-            @Qualifier("girl")
+            @Qualifier("girl") //for reference side
             Agreement agreement;
 
             Boy(){
