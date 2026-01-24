@@ -1,14 +1,13 @@
 package edu.ijse.Config;
 
 import edu.ijse.Bean.SpringBean;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.*;
 
 @Configuration
 @ComponentScan(basePackages = "edu.ijse.Bean")
 @Import({AppConfig1.class,AppConfig2.class})
+@ImportResource("classpath:hibernate.cfg.xml")// if file in class path
+//@ImportResource("file:hibernate.cfg.xml") // os path
 public class AppConfig {
 
     public AppConfig() {
