@@ -3,6 +3,7 @@ package edu.ijse;
 import edu.ijse.Bean.Boy;
 import edu.ijse.Bean.Girl;
 import edu.ijse.Config.AppConfig;
+import edu.ijse.di.TestOne;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -16,8 +17,11 @@ public class AppInitializer {
 //        Girl girl=context.getBean(Girl.class);
 //        girl.chat();
 
-          Boy boy=context.getBean(Boy.class);
-          boy.chatWithGirl();
+//          Boy boy=context.getBean(Boy.class);
+//          boy.chatWithGirl();
+
+        TestOne testOne=context.getBean(TestOne.class);
+        testOne.chatWithTwo();
 
         context.registerShutdownHook();
     }
