@@ -1,12 +1,15 @@
 package edu.ijse.Bean;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 @Component
 public class Boy {
 
             @Autowired// auto resolve DI
+            @Qualifier("girl")
             Agreement agreement;
 
             Boy(){
