@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="02_spring_bean_lifeCycle" />
         <module name="01_Spring_Core" />
+        <module name="03_Dependancy_Injection" />
       </profile>
     </annotationProcessing>
   </component>

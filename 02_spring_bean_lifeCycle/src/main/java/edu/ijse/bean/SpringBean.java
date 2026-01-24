@@ -16,16 +16,16 @@ public class SpringBean implements BeanNameAware, BeanFactoryAware, ApplicationC
     }
 
     // no method for populate properties
-
+    @Override
+    public void setBeanName(String name) {
+        System.out.println("setBeanName");// name aware
+    }
     @Override
     public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
         System.out.println("setBeanFactory"); //bean factory aware
     }
 
-    @Override
-    public void setBeanName(String name) {
-       System.out.println("setBeanName");// name aware
-    }
+
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
