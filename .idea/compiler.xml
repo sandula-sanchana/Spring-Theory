@@ -9,6 +9,7 @@
         <module name="03_Dependancy_Injection" />
         <module name="05_configurations" />
         <module name="02_spring_bean_lifeCycle" />
+        <module name="07_Spring_ENV" />
         <module name="01_Spring_Core" />
         <module name="06_Runtime_Value_Injection" />
         <module name="04_Fullmode_vs_lightmode" />
