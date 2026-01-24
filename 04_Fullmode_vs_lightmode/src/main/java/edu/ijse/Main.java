@@ -1,5 +1,7 @@
 package edu.ijse;
 
+import edu.ijse.Bean.SpringBeanOne;
+import edu.ijse.Bean.SpringBeanTwo;
 import edu.ijse.Config.AppConfig;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -11,6 +13,8 @@ public class Main {
 
         AnnotationConfigApplicationContext context=new AnnotationConfigApplicationContext();
         context.register(AppConfig.class);
+//        context.register(SpringBeanOne.class);
+//        context.register(SpringBeanTwo.class);
         context.refresh();
 
 
