@@ -12,6 +12,11 @@ public class HelloController {
         System.out.println("hello ocontroller");
     }
 
+    @GetMapping("index")
+    public String index(){
+        return "index";
+    }
+
     @GetMapping
     public String hello(){
         return "hello";
