@@ -21,9 +21,19 @@ public class RequestController {
 
     }
 
-    @PostMapping("path_variable/{name")
-    public String getPathVariables(@PathVariable("name") String name){ // url //pathvariable/sandula
+    @PostMapping("path_variable/{name}/{addr}")
+    public String getPathVariables(@PathVariable("name") String name,@PathVariable("addr") String address){ // url //pathvariable/sandula
 
-        return name;
+        return name + "  " + address;
+    }
+
+    @PostMapping("body/form")
+    public String getRequestBody(@RequestParam("id") String id,@RequestParam("name") String name) {
+        return id + " " + name;
+    }
+
+    @PostMapping("body/form")
+    public String getRequestBodyXWWWFormURLEncoded(@RequestParam("id") String id,@RequestParam("name") String name) {
+        return id + " " + name;
     }
 }
