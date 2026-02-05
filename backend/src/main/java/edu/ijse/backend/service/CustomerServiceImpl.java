@@ -22,5 +22,11 @@ public class CustomerServiceImpl implements CustomerInterface {
         customerRepository.save(new Customer(customerDTO.getId(),customerDTO.getName(),customerDTO.getAddress()));
     }
 
+    @Override
+    public void updateCustomer(CustomerDTO customerDTO) {
+       System.out.println("customerService.updateCustomer");
+       customerRepository.save(new Customer(customerDTO.getId(),customerDTO.getName(),customerDTO.getAddress()));
+    }
+
 
 }

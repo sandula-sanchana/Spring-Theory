@@ -4,13 +4,11 @@ package edu.ijse.backend.controller;
 import edu.ijse.backend.dto.CustomerDTO;
 import edu.ijse.backend.service.CustomerInterface;
 import edu.ijse.backend.service.CustomerServiceImpl;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("api/v1/customer")
+@CrossOrigin
 public class CustomerController {
 
     private final CustomerInterface customerService;
@@ -24,6 +22,11 @@ public class CustomerController {
         System.out.println("save customer");
         customerService.saveCustomer(customerDTO);
 
+    }
+    @PutMapping
+    public  void updateCustomer(@RequestBody CustomerDTO customerDTO){
+        System.out.println("update customer");
+        customerService.updateCustomer(customerDTO);
     }
 
 }
