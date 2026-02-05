@@ -1,4 +1,4 @@
-package edu.ijse.backend;
+package edu.ijse.backend.dto;
 
 public class CustomerDTO {
 
