@@ -25,10 +25,10 @@
                     <a class="nav-link" href="../index.html">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="customer.html">CUSTOMER</a>
+                    <a class="nav-link active" aria-current="page" href="customer.html">item</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="item.html">ITEM</a>
+                    <a class="nav-link" href="item.html">customer</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="place-order.html">Place order</a>
@@ -90,124 +90,7 @@
 
 </div>
 
-<script>
-    const cusId = document.getElementById("cusId");
-    const cusName = document.getElementById("cusName");
-    const cusAddress = document.getElementById("cusAddress");
 
-    const tbl = document.getElementById("tblCustomers");
-
-    const btnAdd = document.getElementById("btnAdd");
-    const btnUpdate = document.getElementById("btnUpdate");
-    const btnDelete = document.getElementById("btnDelete");
-    const btnClear = document.getElementById("btnClear");
-
-    let selectedRow = null;
-
-    function resetForm() {
-        cusId.value = "";
-        cusName.value = "";
-        cusAddress.value = "";
-        selectedRow = null;
-
-        btnUpdate.disabled = true;
-        btnDelete.disabled = true;
-
-        cusId.disabled = false;
-        cusId.focus();
-    }
-
-    function validateInputs() {
-        if (!cusId.value.trim() || !cusName.value.trim() || !cusAddress.value.trim()) {
-            alert("Please fill all fields!");
-            return false;
-        }
-        return true;
-    }
-
-    function idExists(id) {
-        const rows = tbl.querySelectorAll("tr");
-        for (const r of rows) {
-            if (r.children[0].innerText === id) return true;
-        }
-        return false;
-    }
-
-    // ADD
-    btnAdd.addEventListener("click", () => {
-        if (!validateInputs()) return;
-
-        const id = cusId.value.trim();
-        const name = cusName.value.trim();
-        const address = cusAddress.value.trim();
-
-        if (idExists(id)) {
-            alert("This ID already exists! Use Update.");
-            return;
-        }
-
-        const row = document.createElement("tr");
-        row.innerHTML = `
-          <td>${id}</td>
-          <td>${name}</td>
-          <td>${address}</td>
-        `;
-        tbl.appendChild(row);
-
-        resetForm();
-    });
-
-    // CLICK ROW -> SELECT
-    tbl.addEventListener("click", (e) => {
-        const tr = e.target.closest("tr");
-        if (!tr) return;
-
-        selectedRow = tr;
-
-        cusId.value = tr.children[0].innerText;
-        cusName.value = tr.children[1].innerText;
-        cusAddress.value = tr.children[2].innerText;
-
-        btnUpdate.disabled = false;
-        btnDelete.disabled = false;
-
-        cusId.disabled = true; // do not allow changing ID
-    });
-
-    // UPDATE
-    btnUpdate.addEventListener("click", () => {
-        if (!selectedRow) {
-            alert("Select a row first!");
-            return;
-        }
-        if (!validateInputs()) return;
-
-        selectedRow.children[1].innerText = cusName.value.trim();
-        selectedRow.children[2].innerText = cusAddress.value.trim();
-
-        resetForm();
-    });
-
-    // DELETE
-    btnDelete.addEventListener("click", () => {
-        if (!selectedRow) {
-            alert("Select a row first!");
-            return;
-        }
-
-        const ok = confirm("Are you sure you want to delete this customer?");
-        if (!ok) return;
-
-        selectedRow.remove();
-        resetForm();
-    });
-
-    // CLEAR
-    btnClear.addEventListener("click", resetForm);
-
-    // init
-    resetForm();
-</script>
 
 <!-- ✅ Bootstrap JS (needed for navbar toggle) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
