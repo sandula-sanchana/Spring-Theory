@@ -23,6 +23,7 @@ public class WebAppConfig implements WebMvcConfigurer {
         return internalResourceViewResolver;
     }
 
+
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/views/**")
