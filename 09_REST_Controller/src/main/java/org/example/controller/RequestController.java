@@ -22,7 +22,7 @@ public class RequestController {
     // POST /api/v1/request/query?name=sandula
     @PostMapping("/query")
     public String query(@RequestParam String name){
-
+        System.out.println(name);
         return "Hello " + name;
     }
 
@@ -47,6 +47,7 @@ public class RequestController {
     @PostMapping(value = "/upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public String upload(
                          @RequestParam("name") String name) {
+        System.out.println(name);
         return " yaaaaa " + name;
     }
 

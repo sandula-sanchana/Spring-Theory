@@ -23,6 +23,12 @@ public class WebAppConfig implements WebMvcConfigurer {
         return internalResourceViewResolver;
     }
 
+    @Bean(name = "multipartResolver")
+    public org.springframework.web.multipart.support.StandardServletMultipartResolver multipartResolver() {
+        return new org.springframework.web.multipart.support.StandardServletMultipartResolver();
+    }
+
+
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Item Management</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-5">
+
+    <!-- FORM -->
+    <div class="card shadow p-4">
+        <h3 class="mb-4">Item Form</h3>
+
+        <div class="row g-3">
+
+            <div class="col-md-3">
+                <label class="form-label">Item ID</label>
+                <input type="text" id="itemId" class="form-control">
+            </div>
+
+            <div class="col-md-3">
+                <label class="form-label">Item Name</label>
+                <input type="text" id="itemName" class="form-control">
+            </div>
+
+            <div class="col-md-3">
+                <label class="form-label">Quantity</label>
+                <input type="number" id="itemQty" class="form-control">
+            </div>
+
+            <div class="col-md-3">
+                <label class="form-label">Price ($)</label>
+                <input type="number" id="itemPrice" class="form-control">
+            </div>
+
+        </div>
+
+        <div class="mt-4 d-flex gap-2">
+            <button class="btn btn-success" id="addBtn">Add</button>
+            <button class="btn btn-warning" id="updateBtn" disabled>Update</button>
+            <button class="btn btn-danger" id="deleteBtn" disabled>Delete</button>
+            <button class="btn btn-secondary" id="clearBtn">Clear</button>
+        </div>
+    </div>
+
+
+    <!-- TABLE -->
+    <div class="card shadow mt-5 p-4">
+        <h3 class="mb-3">Item Table</h3>
+
+        <table class="table table-bordered table-hover text-center align-middle">
+            <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Qty</th>
+                <th>Price</th>
+            </tr>
+            </thead>
+
+            <tbody id="itemTable"></tbody>
+        </table>
+    </div>
+
+</div>
+
+
+<script>
+
+    let selectedRow = null;
+
+    const id = document.getElementById("itemId");
+    const name = document.getElementById("itemName");
+    const qty = document.getElementById("itemQty");
+    const price = document.getElementById("itemPrice");
+
+    const table = document.getElementById("itemTable");
+
+    const addBtn = document.getElementById("addBtn");
+    const updateBtn = document.getElementById("updateBtn");
+    const deleteBtn = document.getElementById("deleteBtn");
+
+
+    function clearForm(){
+        id.value="";
+        name.value="";
+        qty.value="";
+        price.value="";
+        selectedRow=null;
+
+        id.disabled=false;
+        updateBtn.disabled=true;
+        deleteBtn.disabled=true;
+    }
+
+    function validate(){
+        if(!id.value || !name.value || !qty.value || !price.value){
+            alert("Fill all fields!");
+            return false;
+        }
+        return true;
+    }
+
+    function idExists(itemId){
+        let rows = table.querySelectorAll("tr");
+
+        for(let r of rows){
+            if(r.children[0].innerText === itemId){
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    // ADD
+    addBtn.addEventListener("click", ()=>{
+
+        if(!validate()) return;
+
+        if(idExists(id.value)){
+            alert("Item ID already exists!");
+            return;
+        }
+
+        let row = document.createElement("tr");
+
+        row.innerHTML = `
+        <td>${id.value}</td>
+        <td>${name.value}</td>
+        <td>${qty.value}</td>
+        <td>$${parseFloat(price.value).toFixed(2)}</td>
+    `;
+
+        table.appendChild(row);
+
+        clearForm();
+    });
+
+
+    // SELECT ROW
+    table.addEventListener("click",(e)=>{
+
+        let tr = e.target.closest("tr");
+        if(!tr) return;
+
+        selectedRow = tr;
+
+        id.value = tr.children[0].innerText;
+        name.value = tr.children[1].innerText;
+        qty.value = tr.children[2].innerText;
+        price.value = tr.children[3].innerText.replace("$","");
+
+        id.disabled=true;
+        updateBtn.disabled=false;
+        deleteBtn.disabled=false;
+    });
+
+
+    // UPDATE
+    updateBtn.addEventListener("click",()=>{
+
+        if(!selectedRow) return;
+
+        selectedRow.children[1].innerText = name.value;
+        selectedRow.children[2].innerText = qty.value;
+        selectedRow.children[3].innerText = "$"+parseFloat(price.value).toFixed(2);
+
+        clearForm();
+    });
+
+
+    // DELETE
+    deleteBtn.addEventListener("click",()=>{
+
+        if(!selectedRow) return;
+
+        if(confirm("Delete this item?")){
+            selectedRow.remove();
+            clearForm();
+        }
+    });
+
+
+    document.getElementById("clearBtn").addEventListener("click",clearForm);
+
+</script>
+
+</body>
+</html>
