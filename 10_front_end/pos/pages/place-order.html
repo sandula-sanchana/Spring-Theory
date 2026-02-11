@@ -33,7 +33,7 @@
 
     <div class="row g-4">
 
-        <!-- LEFT: ORDER DETAILS -->
+
         <div class="col-lg-5">
             <div class="card shadow p-4">
                 <h3 class="mb-3">Order Details</h3>
@@ -90,7 +90,7 @@
             </div>
         </div>
 
-        <!-- RIGHT: CART -->
+
         <div class="col-lg-7">
             <div class="card shadow p-4">
                 <div class="d-flex justify-content-between align-items-center mb-3">
@@ -122,6 +122,245 @@
 
     </div>
 </div>
+
+<script src="https://code.jquery.com/jquery-4.0.0.js"
+        integrity="sha256-9fsHeVnKBvqh3FB2HYu7g2xseAZ5MlN6Kz/qnkASV8U="
+        crossorigin="anonymous"></script>
+
+<script>
+    const CUSTOMER_URL = "http://localhost:8080/api/v1/customer";
+    const ITEM_URL = "http://localhost:8080/api/v1/item";
+    const ORDER_URL = "http://localhost:8080/api/v1/order";
+
+    let cart = []; // { itemId, name, qty, unitPrice, total }
+
+
+    $(document).ready(function () {
+        loadCustomersToSelect();
+        loadItemsToSelect();
+
+        $("#cusSelect").on("change", onCustomerSelect);
+        $("#itemSelect").on("change", onItemSelect);
+
+        $("#btnAddToCart").on("click", addToCart);
+        $("#btnPlaceOrder").on("click", placeOrder);
+
+        // remove button using event delegation (works for dynamic rows)
+        $("#cartBody").on("click", ".btn-remove", function () {
+            const itemId = $(this).data("id");
+            removeFromCart(itemId);
+        });
+    });
+
+
+    function loadCustomersToSelect() {
+        $.ajax({
+            url: CUSTOMER_URL,
+            method: "GET",
+            success: function (customers) {
+                $("#cusSelect").empty().append(`<option value="">-- Select Customer --</option>`);
+                customers.forEach(c => {
+                    $("#cusSelect").append(`<option value="${c.id}">${c.id}</option>`);
+                });
+            },
+            error: function (xhr) {
+                console.log(xhr.responseText);
+                alert("Failed to load customers");
+            }
+        });
+    }
+
+    function loadItemsToSelect() {
+        $.ajax({
+            url: ITEM_URL,
+            method: "GET",
+            success: function (items) {
+                $("#itemSelect").empty().append(`<option value="">-- Select Item --</option>`);
+                items.forEach(i => {
+                    $("#itemSelect").append(`<option value="${i.id}">${i.id}</option>`);
+                });
+            },
+            error: function (xhr) {
+                console.log(xhr.responseText);
+                alert("Failed to load items");
+            }
+        });
+    }
+
+
+    function onCustomerSelect() {
+        const cusId = $("#cusSelect").val();
+        $("#cusNameView").text("-");
+
+        if (!cusId) return;
+
+        $.ajax({
+            url: CUSTOMER_URL,
+            method: "GET",
+            success: function (customers) {
+                const c = customers.find(x => x.id === cusId);
+                $("#cusNameView").text(c ? c.name : "-");
+            }
+        });
+    }
+
+    function onItemSelect() {
+        const itemId = $("#itemSelect").val();
+
+
+        $("#itemName").val("");
+        $("#unitPrice").val("");
+        $("#availableQty").val("");
+        $("#orderQty").val("");
+
+        if (!itemId) return;
+
+        $.ajax({
+            url: ITEM_URL,
+            method: "GET",
+            success: function (items) {
+                const i = items.find(x => x.id === itemId);
+                if (!i) return;
+
+                $("#itemName").val(i.name);
+                $("#unitPrice").val(Number(i.price).toFixed(2));
+                $("#availableQty").val(i.qty);
+                $("#orderQty").val(1);
+            }
+        });
+    }
+
+
+    function addToCart() {
+        const itemId = $("#itemSelect").val();
+        const name = $("#itemName").val();
+        const unitPrice = Number($("#unitPrice").val());
+        const available = Number($("#availableQty").val());
+        const qty = Number($("#orderQty").val());
+
+        if (!itemId) {
+            alert("Select an item!");
+            return;
+        }
+        if (!qty || qty <= 0) {
+            alert("Enter a valid qty!");
+            return;
+        }
+        if (qty > available) {
+            alert("Not enough stock!");
+            return;
+        }
+
+        const existing = cart.find(x => x.itemId === itemId);
+        if (existing) {
+            const newQty = existing.qty + qty;
+            if (newQty > available) {
+                alert("Cart qty exceeds available stock!");
+                return;
+            }
+            existing.qty = newQty;
+            existing.total = existing.qty * existing.unitPrice;
+        } else {
+            cart.push({
+                itemId,
+                name,
+                qty,
+                unitPrice,
+                total: qty * unitPrice
+            });
+        }
+
+        renderCart();
+    }
+
+    function removeFromCart(itemId) {
+        cart = cart.filter(x => x.itemId !== itemId);
+        renderCart();
+    }
+
+    function renderCart() {
+        $("#cartBody").empty();
+
+        cart.forEach(row => {
+            $("#cartBody").append(`
+        <tr>
+          <td>${row.itemId}</td>
+          <td>${row.name}</td>
+          <td>${row.qty}</td>
+          <td>${row.unitPrice.toFixed(2)}</td>
+          <td>${row.total.toFixed(2)}</td>
+          <td>
+            <button class="btn btn-sm btn-danger btn-remove" data-id="${row.itemId}">Remove</button>
+          </td>
+        </tr>
+      `);
+        });
+
+        const grandTotal = cart.reduce((sum, x) => sum + x.total, 0);
+        $("#grandTotal").text(grandTotal.toFixed(2));
+    }
+
+
+    function placeOrder() {
+        const orderId = $("#orderId").val().trim();
+        const customerId = $("#cusSelect").val();
+
+        if (!orderId) {
+            alert("Enter Order ID!");
+            return;
+        }
+        if (!customerId) {
+            alert("Select Customer!");
+            return;
+        }
+        if (cart.length === 0) {
+            alert("Cart is empty!");
+            return;
+        }
+
+        const order = {
+            orderId,
+            customerId,
+            date: new Date().toISOString(),
+            total: Number($("#grandTotal").text()),
+            orderDetails: cart.map(x => ({
+                itemId: x.itemId,
+                qty: x.qty,
+                unitPrice: x.unitPrice
+            }))
+        };
+
+        $.ajax({
+            url: ORDER_URL,
+            method: "POST",
+            contentType: "application/json",
+            data: JSON.stringify(order),
+            success: function () {
+                alert("Order placed ✅");
+
+                // reset UI
+                cart = [];
+                renderCart();
+                $("#orderId").val("");
+                $("#cusSelect").val("");
+                $("#cusNameView").text("-");
+                $("#itemSelect").val("");
+                $("#itemName").val("");
+                $("#unitPrice").val("");
+                $("#availableQty").val("");
+                $("#orderQty").val("");
+
+
+                loadItemsToSelect();
+            },
+            error: function (xhr) {
+                console.log(xhr.responseText);
+                alert("Place order failed: " + (xhr.responseText || xhr.status));
+            }
+        });
+    }
+</script>
+
 
 
 
