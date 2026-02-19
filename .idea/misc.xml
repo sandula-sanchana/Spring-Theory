@@ -15,6 +15,7 @@
         <option value="$PROJECT_DIR$/09_REST_Controller/pom.xml" />
         <option value="$PROJECT_DIR$/11_Backend/pom.xml" />
         <option value="$PROJECT_DIR$/backend/pom.xml" />
+        <option value="$PROJECT_DIR$/11_security/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

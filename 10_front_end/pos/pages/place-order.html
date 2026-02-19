@@ -145,7 +145,6 @@
         $("#btnAddToCart").on("click", addToCart);
         $("#btnPlaceOrder").on("click", placeOrder);
 
-        // remove button using event delegation (works for dynamic rows)
         $("#cartBody").on("click", ".btn-remove", function () {
             const itemId = $(this).data("id");
             removeFromCart(itemId);
