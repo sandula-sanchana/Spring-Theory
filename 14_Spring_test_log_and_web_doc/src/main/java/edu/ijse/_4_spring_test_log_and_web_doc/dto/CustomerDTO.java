@@ -2,15 +2,13 @@ package edu.ijse._4_spring_test_log_and_web_doc.dto;
 
 import jakarta.annotation.Nullable;
 import jakarta.validation.constraints.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
+@Builder
 public class CustomerDTO {
 
     @Nullable

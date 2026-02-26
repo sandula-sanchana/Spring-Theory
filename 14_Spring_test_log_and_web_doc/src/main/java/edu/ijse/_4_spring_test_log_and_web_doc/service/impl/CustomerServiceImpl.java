@@ -24,11 +24,12 @@ public class CustomerServiceImpl implements CustomerService {
     private final ModelMapper modelMapper;
 
     @Override
-    public void saveCustomer(CustomerDTO customerDTO) {
+    public Customer saveCustomer(CustomerDTO customerDTO) {
         if (customerDTO == null) {
             throw new BadRequestException("Request body is missing");
         }
-        customerRepository.save(modelMapper.map(customerDTO, Customer.class));
+        Customer customer=customerRepository.save(modelMapper.map(customerDTO, Customer.class));
+        return customer;
     }
 
     @Override
