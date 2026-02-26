@@ -1,0 +1,30 @@
+2026-02-26T20:35:10.328+05:30  INFO 50497 --- [14_Spring_test_log_and_web_doc] [main] e.i._.ApplicationTests                   : Starting ApplicationTests using Java 21.0.10 with PID 50497 (started by sandula-sanchana in /home/sandula-sanchana/Desktop/GDSE/Spring-Theory/14_Spring_test_log_and_web_doc)
+2026-02-26T20:35:10.330+05:30  INFO 50497 --- [14_Spring_test_log_and_web_doc] [main] e.i._.ApplicationTests                   : No active profile set, falling back to 1 default profile: "default"
+2026-02-26T20:35:10.757+05:30  INFO 50497 --- [14_Spring_test_log_and_web_doc] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-02-26T20:35:10.783+05:30  INFO 50497 --- [14_Spring_test_log_and_web_doc] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 21 ms. Found 1 JPA repository interface.
+2026-02-26T20:35:11.075+05:30  INFO 50497 --- [14_Spring_test_log_and_web_doc] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-02-26T20:35:11.111+05:30  INFO 50497 --- [14_Spring_test_log_and_web_doc] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.4.Final
+2026-02-26T20:35:11.446+05:30  INFO 50497 --- [14_Spring_test_log_and_web_doc] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-02-26T20:35:11.477+05:30  INFO 50497 --- [14_Spring_test_log_and_web_doc] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-02-26T20:35:11.600+05:30  INFO 50497 --- [14_Spring_test_log_and_web_doc] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@28295554
+2026-02-26T20:35:11.601+05:30  INFO 50497 --- [14_Spring_test_log_and_web_doc] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-02-26T20:35:11.648+05:30  INFO 50497 --- [14_Spring_test_log_and_web_doc] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/spring_mini_test?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC&createDatabaseIfNotExist=true]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.4.8
+	Default catalog/schema: spring_mini_test/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-02-26T20:35:12.066+05:30  INFO 50497 --- [14_Spring_test_log_and_web_doc] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-02-26T20:35:12.093+05:30  INFO 50497 --- [14_Spring_test_log_and_web_doc] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-02-26T20:35:12.138+05:30  INFO 50497 --- [14_Spring_test_log_and_web_doc] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-02-26T20:35:12.259+05:30  WARN 50497 --- [14_Spring_test_log_and_web_doc] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-26T20:35:12.629+05:30  INFO 50497 --- [14_Spring_test_log_and_web_doc] [main] e.i._.ApplicationTests                   : Started ApplicationTests in 2.476 seconds (process running for 3.26)
+2026-02-26T20:35:12.941+05:30  INFO 50497 --- [14_Spring_test_log_and_web_doc] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-02-26T20:35:12.942+05:30  INFO 50497 --- [14_Spring_test_log_and_web_doc] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-02-26T20:35:12.947+05:30  INFO 50497 --- [14_Spring_test_log_and_web_doc] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

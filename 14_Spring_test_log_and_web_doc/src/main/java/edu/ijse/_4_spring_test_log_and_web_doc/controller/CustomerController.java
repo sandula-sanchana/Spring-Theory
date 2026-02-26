@@ -5,6 +5,7 @@ import edu.ijse._4_spring_test_log_and_web_doc.service.CustomerService;
 import edu.ijse._4_spring_test_log_and_web_doc.util.APIResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -17,6 +18,7 @@ import java.util.List;
 @CrossOrigin
 @RequiredArgsConstructor
 @Validated
+@Slf4j
 public class CustomerController {
 
     private final CustomerService customerService;
@@ -25,7 +27,11 @@ public class CustomerController {
     @PostMapping
     public ResponseEntity<APIResponse<String>> saveCustomer(
             @RequestBody @Valid CustomerDTO customerDTO) {
-
+        log.info("saveCustomer");
+        log.debug("saving cus {}",customerDTO);
+        log.warn("warning log");
+        log.trace("tracing log");
+        log.error("error log");
         customerService.saveCustomer(customerDTO);
 
         return ResponseEntity.status(HttpStatus.CREATED)

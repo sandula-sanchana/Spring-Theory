@@ -1,0 +1,38 @@
+2026-02-26T20:35:33.820+05:30  INFO 50614 --- [14_Spring_test_log_and_web_doc] [main] e.i._.Application                        : Starting Application using Java 21.0.10 with PID 50614 (/home/sandula-sanchana/Desktop/GDSE/Spring-Theory/14_Spring_test_log_and_web_doc/target/classes started by sandula-sanchana in /home/sandula-sanchana/Desktop/GDSE/Spring-Theory)
+2026-02-26T20:35:33.823+05:30  INFO 50614 --- [14_Spring_test_log_and_web_doc] [main] e.i._.Application                        : No active profile set, falling back to 1 default profile: "default"
+2026-02-26T20:35:34.097+05:30  INFO 50614 --- [14_Spring_test_log_and_web_doc] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-02-26T20:35:34.119+05:30  INFO 50614 --- [14_Spring_test_log_and_web_doc] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 18 ms. Found 1 JPA repository interface.
+2026-02-26T20:35:34.333+05:30  INFO 50614 --- [14_Spring_test_log_and_web_doc] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-02-26T20:35:34.340+05:30  INFO 50614 --- [14_Spring_test_log_and_web_doc] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-02-26T20:35:34.340+05:30  INFO 50614 --- [14_Spring_test_log_and_web_doc] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-02-26T20:35:34.357+05:30  INFO 50614 --- [14_Spring_test_log_and_web_doc] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 507 ms
+2026-02-26T20:35:34.431+05:30  INFO 50614 --- [14_Spring_test_log_and_web_doc] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-02-26T20:35:34.450+05:30  INFO 50614 --- [14_Spring_test_log_and_web_doc] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.4.Final
+2026-02-26T20:35:34.633+05:30  INFO 50614 --- [14_Spring_test_log_and_web_doc] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-02-26T20:35:34.647+05:30  INFO 50614 --- [14_Spring_test_log_and_web_doc] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-02-26T20:35:34.719+05:30  INFO 50614 --- [14_Spring_test_log_and_web_doc] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5178345d
+2026-02-26T20:35:34.721+05:30  INFO 50614 --- [14_Spring_test_log_and_web_doc] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-02-26T20:35:34.761+05:30  INFO 50614 --- [14_Spring_test_log_and_web_doc] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/spring_mini_test?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC&createDatabaseIfNotExist=true]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.4.8
+	Default catalog/schema: spring_mini_test/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-02-26T20:35:35.090+05:30  INFO 50614 --- [14_Spring_test_log_and_web_doc] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-02-26T20:35:35.126+05:30  INFO 50614 --- [14_Spring_test_log_and_web_doc] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-02-26T20:35:35.161+05:30  INFO 50614 --- [14_Spring_test_log_and_web_doc] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-02-26T20:35:35.231+05:30  WARN 50614 --- [14_Spring_test_log_and_web_doc] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-26T20:35:35.397+05:30  INFO 50614 --- [14_Spring_test_log_and_web_doc] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-02-26T20:35:35.400+05:30  INFO 50614 --- [14_Spring_test_log_and_web_doc] [main] e.i._.Application                        : Started Application in 1.877 seconds (process running for 2.231)
+2026-02-26T20:35:44.881+05:30  INFO 50614 --- [14_Spring_test_log_and_web_doc] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-02-26T20:35:44.881+05:30  INFO 50614 --- [14_Spring_test_log_and_web_doc] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-02-26T20:35:44.882+05:30  INFO 50614 --- [14_Spring_test_log_and_web_doc] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-02-26T20:35:55.246+05:30  INFO 50614 --- [14_Spring_test_log_and_web_doc] [http-nio-8080-exec-4] e.i._.controller.CustomerController      : saveCustomer
+2026-02-26T20:35:55.246+05:30  WARN 50614 --- [14_Spring_test_log_and_web_doc] [http-nio-8080-exec-4] e.i._.controller.CustomerController      : warning log
+2026-02-26T20:35:55.246+05:30 ERROR 50614 --- [14_Spring_test_log_and_web_doc] [http-nio-8080-exec-4] e.i._.controller.CustomerController      : error log
