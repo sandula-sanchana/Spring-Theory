@@ -18,19 +18,21 @@
         <module name="06_Runtime_Value_Injection" />
         <module name="04_Fullmode_vs_lightmode" />
       </profile>
-      <profile name="Annotation profile for 11_security" enabled="true">
+      <profile name="Annotation profile for 14_Spring_test_log_and_web_doc" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.42/lombok-1.18.42.jar" />
         </processorPath>
+        <module name="14_Spring_test_log_and_web_doc" />
         <module name="security" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="14_Spring_test_log_and_web_doc" options="-parameters" />
       <module name="9_backend" options="-parameters" />
       <module name="security" options="-parameters" />
     </option>

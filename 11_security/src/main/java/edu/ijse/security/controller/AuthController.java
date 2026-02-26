@@ -6,10 +6,7 @@ import edu.ijse.security.service.AuthService;
 import edu.ijse.security.util.APIResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("api/v1/auth")
@@ -19,13 +16,14 @@ public class AuthController {
 
     private final AuthService authService;
 
+    @PostMapping("register")
     public ResponseEntity<APIResponse<Object>> registerUSer(@RequestBody RegisterDTO registerDTO){
         return ResponseEntity.ok(new APIResponse<>(
                 200,"OK",
                 authService.register(registerDTO)
         ));
     }
-
+    @PostMapping("login")
     public ResponseEntity<APIResponse<Object>> loginUser(@RequestBody AuthDTO authDTO){
         return ResponseEntity.ok(new APIResponse<>(
                 200,"OK",

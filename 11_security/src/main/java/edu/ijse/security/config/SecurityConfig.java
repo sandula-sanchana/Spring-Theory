@@ -27,12 +27,12 @@ public class SecurityConfig {
     private final PasswordEncoder passwordEncoder;
 
     @Bean
-    public SecurityFilterChain springSecurityFilterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {// method name should be this
 
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("api/v1/auth/**").permitAll()
+                        .requestMatchers("/api/v1/auth/**").permitAll() //if url end with auth / something don't need token
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session ->

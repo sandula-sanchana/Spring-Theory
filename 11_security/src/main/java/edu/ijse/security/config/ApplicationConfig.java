@@ -26,8 +26,7 @@ public class ApplicationConfig {
 
     @Bean
     public UserDetailsService userDetailsService() {
-        return username -> userRepo.findByUsername(username)
-                .map(u -> new User(
+        return username -> userRepo.findByUsername(username).map(u -> new User(
                         u.getUsername(),
                         u.getPassword(),
                         List.of(new SimpleGrantedAuthority("ROLE_" + u.getRole().name()))
